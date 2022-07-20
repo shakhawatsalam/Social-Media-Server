@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv"
 import AuthRoute from './Routes/AuthRoute.js'
+import UserRoute from './Routes/UserRoute.js'
 //routes
 const app = express();
 
@@ -16,5 +17,6 @@ mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true, useUnifiedTopolo
     .then(() => app.listen(process.env.PORT, () => console.log(`Listening ${process.env.PORT}`)))
     .catch((error) => console.log(error));
 
-    //useage of route 
-    app.use('/auth', AuthRoute)
+//useage of route 
+app.use('/auth', AuthRoute)
+app.use('/user', UserRoute)
